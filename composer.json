@@ -1,0 +1,26 @@
+{
+  "name": "mp/mpbanner",
+  "description": "Add banner",
+  "homepage": "https://web.marvin-poticadou.fr",
+  "license": "AFL-3.0",
+  "authors": [
+    {
+      "name": "Marvin POTICADOU",
+      "email": "marvin.poticadou@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.2.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Mp\\Module\\MpBanner\\": "src/"
+    },
+    "classmap": ["mpbanner.php"],
+    "exclude-from-classmap": []
+  },
+  "config": {
+    "prepend-autoloader": false
+  },
+  "type": "prestashop-module"
+}

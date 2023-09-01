@@ -1,0 +1,17 @@
+{
+  "name": "mpbanner",
+  "version": "1.0.0",
+  "author": "Marvin POTICADOU",
+  "license": "OSL-3.0",
+  "private": true,
+  "scripts": {
+    "dev": "encore dev",
+    "watch": "encore dev --watch",
+    "build": "encore production --progress"
+  },
+  "devDependencies": {
+    "@symfony/webpack-encore": "^0.29.1",
+    "sass": "^1.26.3",
+    "sass-loader": "^7.0.1"
+  }
+}

@@ -1,0 +1,48 @@
+services:
+    _defaults:
+        public: true
+
+    mp.module.mpbanner.uploader.banner_image:
+        class: Mp\Module\MpBanner\Services\BannerImageUploader
+
+    mp.module.mpbanner.form.type.banner:
+        class: Mp\Module\MpBanner\Form\Type\BannerType
+        tags: ['form.type']
+        parent: 'form.type.translatable.aware'
+        public: true
+
+    mp.module.mpbanner.grid.definition.factory.banner:
+        class: Mp\Module\MpBanner\Grid\Definition\Factory\BannerDefinitionFactory
+        arguments:
+            - '@prestashop.core.hook.dispatcher'
+        calls:
+            - { method: setTranslator, arguments: ['@translator'] }
+
+    mp.module.mpbanner.grid.query_builder.banner:
+        class: Mp\Module\MpBanner\Grid\Query\BannerQueryBuilder
+        arguments:
+            - '@doctrine.dbal.default_connection'
+            - '%database_prefix%'
+
+    mp.module.mpbanner.grid.data.factory.banner:
+        class: PrestaShop\PrestaShop\Core\Grid\Data\Factory\DoctrineGridDataFactory
+        arguments:
+            - '@mp.module.mpbanner.grid.query_builder.banner'
+            - '@prestashop.core.hook.dispatcher'
+            - '@prestashop.core.grid.query.doctrine_query_parser'
+            - 'banner'
+
+    mp.module.mpbanner.grid.factory.banner:
+        class: PrestaShop\PrestaShop\Core\Grid\GridFactory
+        arguments:
+            - '@mp.module.mpbanner.grid.definition.factory.banner'
+            - '@mp.module.mpbanner.grid.data.factory.banner'
+            - '@prestashop.core.grid.filter.form_factory'
+            - '@prestashop.core.hook.dispatcher'
+
+    mp.module.mpbanner.grid.position_definition:
+        class: PrestaShop\PrestaShop\Core\Grid\Position\PositionDefinition
+        arguments:
+            $table: mpbanner
+            $idField: id_mpbanner
+            $positionField: position

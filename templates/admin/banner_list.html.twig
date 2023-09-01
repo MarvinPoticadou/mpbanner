@@ -1,0 +1,15 @@
+{% extends '@PrestaShop/Admin/layout.html.twig' %}
+{% trans_default_domain 'Admin.Design.Feature' %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-12">
+      {{ include('@PrestaShop/Admin/Common/Grid/grid_panel.html.twig', {'grid': grid }) }}
+    </div>
+  </div>
+{% endblock %}
+
+{% block javascripts %}
+  {{ parent() }}
+  <script src="{{ asset('../modules/mpbanner/public/build/grid.js') }}"></script>
+{% endblock %}

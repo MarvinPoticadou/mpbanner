@@ -1,0 +1,45 @@
+admin_mpbanner_list:
+    path: /mpbanner
+    methods: [GET]
+    defaults:
+        _controller: 'Mp\Module\MpBanner\Action\Admin\BannerListAction::__invoke'
+        _legacy_controller: 'MpBannerController'
+        _legacy_link: 'MpBannerController'
+
+admin_mpbanner_create:
+    path: /mpbanner/new
+    methods: [GET, POST]
+    defaults:
+        _controller: 'Mp\Module\MpBanner\Action\Admin\BannerCreationAction::__invoke'
+
+admin_mpbanner_edit:
+    path: /mpbanner/{id}/edit
+    methods: [GET, POST]
+    defaults:
+        _controller: 'Mp\Module\MpBanner\Action\Admin\BannerEditionAction::__invoke'
+    requirements:
+        id: \d+
+
+admin_mpbanner_delete:
+    path: /mpbanner/{id}/delete
+    methods: [POST]
+    defaults:
+        _controller: 'Mp\Module\MpBanner\Action\Admin\BannerDeletionAction::__invoke'
+    requirements:
+        id: \d+
+
+admin_mpbanner_update_positions:
+    path: /mpbanner/update-positions/{bannerId}
+    methods: [POST]
+    defaults:
+        _controller: 'Mp\Module\MpBanner\Action\Admin\PositionUpdateAction::__invoke'
+    requirements:
+        bannerId: \d+
+
+admin_mpbanner_update_status:
+    path: /mpbanner/toggle-status/{bannerId}
+    methods: [POST]
+    defaults:
+        _controller: 'Mp\Module\MpBanner\Action\Admin\BannerToggleAction::__invoke'
+    requirements:
+        bannerId: \d+

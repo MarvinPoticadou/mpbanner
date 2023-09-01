@@ -1,0 +1,19 @@
+{
+  "entrypoints": {
+    "grid": {
+      "js": [
+        "/modules/mpbanner/public/build/grid.js"
+      ]
+    },
+    "form": {
+      "js": [
+        "/modules/mpbanner/public/build/form.js"
+      ]
+    },
+    "front": {
+      "css": [
+        "/modules/mpbanner/public/build/front.css"
+      ]
+    }
+  }
+}
